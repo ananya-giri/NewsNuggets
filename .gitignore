@@ -1,0 +1,9 @@
+# Ignore node_modules
+01newssum/node_modules/
+server/node_modules/
+
+# Ignore environment files
+server/.env
+
+# Ignore build output (if any)
+01newssum/dist/
