@@ -3,6 +3,9 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import connectDB from './db.js'
 import summaryRoutes from './routes/summaryRoutes.js'
+import newsRoutes from './routes/newsRoutes.js'
+app.use('/api', newsRoutes)
+
 
 console.log("✅ Starting server...")
 
