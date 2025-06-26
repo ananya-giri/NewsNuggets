@@ -4,7 +4,7 @@ const router = express.Router()
 
 const NEWS_API_KEY = process.env.NEWS_API_KEY  // Add to .env
 
-router.get('/news', async (req, res) => {
+router.get('/', async (req, res) => {
   const category = req.query.category || 'general'
   try {
     const response = await axios.get('https://newsapi.org/v2/top-headlines', {
