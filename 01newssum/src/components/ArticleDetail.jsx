@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { summarizeArticle } from '../api/geminiAPI' // 👈 make sure this path is correct
+import { summarizeArticle } from '../api/geminiAPI' 
 import axios from 'axios'
 
 
@@ -28,9 +28,9 @@ export default function ArticleDetail() {
     summary: summaryText,
   }
 
-  // 🔄 Save to backend instead of localStorage
+  // Save to backend 
   try {
-    await axios.post('http://localhost:5000/api/summaries', newSummary)
+    await axios.post('https://newsnuggets-backend.onrender.com/api/summaries', newSummary)
     console.log("✅ Summary saved to MongoDB")
   } catch (err) {
     console.error("❌ Failed to save summary:", err.message)

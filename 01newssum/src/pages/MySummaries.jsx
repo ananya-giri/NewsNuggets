@@ -7,7 +7,7 @@ export default function MySummaries() {
   useEffect(() => {
     const fetchSummaries = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/summaries')
+        const res = await axios.get('https://newsnuggets-backend.onrender.com/api/summaries')
         setSummaries(res.data)
         console.log("Fetched summaries:", res.data)
       } catch (err) {
