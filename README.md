@@ -6,7 +6,7 @@
 
 ## 🔗 Live Demo
 
-🌍 **Frontend**: (https://newsnuggets-f.onrender.com/)
+🌍 **Frontend**: [https://newsnuggets-f.onrender.com/]
 ⚙️ **Backend API**: [(https://newsnugget-backend.onrender.com)]
 
 ---
