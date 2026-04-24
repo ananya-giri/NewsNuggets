@@ -79,11 +79,4 @@ npm run dev
 
 ---
 
-## 👨‍💻 Author
-**Ananya Giri**  
-*Aspiring Full-Stack & AI Engineer*  
 
-📌 [LinkedIn](https://www.linkedin.com/in/ananyagiri/) | 📧 ananyagiri@example.com
-
----
-📄 Licensed under MIT. AI features powered by Google Gemini.
