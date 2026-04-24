@@ -1,12 +1,12 @@
 import express from 'express'
 import dotenv from 'dotenv'
+dotenv.config() // Load variables immediately
 import cors from 'cors'
 import connectDB from './db.js'
 import summaryRoutes from './routes/summaryRoutes.js'
 import newsRoutes from './routes/newsRoutes.js'
-
-// Load env variables first
-dotenv.config()
+import authRoutes from './routes/authRoutes.js'
+import { apiLimiter } from './middlewares/rateLimiter.js'
 
 // Create express app
 const app = express()
@@ -14,6 +14,13 @@ const app = express()
 // Middlewares
 app.use(cors())
 app.use(express.json())
+app.use(apiLimiter)
+
+// Simple request logger
+app.use((req, res, next) => {
+  console.log(`📡 ${req.method} request to ${req.url}`)
+  next()
+})
 
 // Logging
 console.log("✅ Starting server...")
@@ -24,6 +31,7 @@ connectDB()
 // Routes
 app.use('/api/summaries', summaryRoutes)
 app.use('/api/news', newsRoutes)
+app.use('/api/auth', authRoutes)
 
 // Optional test route
 app.get('/', (req, res) => {

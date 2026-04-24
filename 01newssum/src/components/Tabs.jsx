@@ -1,22 +1,23 @@
 const categories = [
   { label: 'General', value: 'general' },
   { label: 'Business', value: 'business' },
-  { label: 'Tech', value: 'technology' },
+  { label: 'Technology', value: 'technology' },
   { label: 'Sports', value: 'sports' },
+  { label: 'Science', value: 'science' },
   { label: 'Health', value: 'health' }
 ]
 
 export default function Tabs({ setCategory, current }) {
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap justify-center gap-2 p-1.5 glass rounded-2xl w-fit mx-auto">
       {categories.map(cat => (
         <button
           key={cat.value}
           onClick={() => setCategory(cat.value)}
-          className={`px-4 py-2 rounded-full border transition ${
+          className={`px-5 py-2 rounded-xl text-sm font-bold tracking-wide transition-all duration-300 ${
             current === cat.value
-              ? 'bg-blue-600 text-white'
-              : 'bg-blue-100 text-blue-600 hover:bg-blue-500 hover:text-white'
+              ? 'bg-brand-primary text-white shadow-lg'
+              : 'text-slate-400 hover:text-white hover:bg-white/5'
           }`}
         >
           {cat.label}

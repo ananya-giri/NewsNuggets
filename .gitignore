@@ -4,6 +4,9 @@ server/node_modules/
 
 # Ignore environment files
 server/.env
+01newssum/.env
+.env
+.env.local
 
 # Ignore build output (if any)
 01newssum/dist/

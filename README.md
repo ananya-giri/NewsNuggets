@@ -1,101 +1,89 @@
-# 📰 NewsNugget – Your AI-Powered News Summarizer
+# 📰 NewsNugget – Agentic AI News Platform
 
-**NewsNugget** is a full-stack MERN (MongoDB, Express, React, Node.js) application that delivers real-time news articles by category and summarizes them using Google's Gemini AI. Built for speed, clarity, and modern browsing, it helps users grasp the essence of breaking stories in seconds.
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Gemini AI](https://img.shields.io/badge/Gemini_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
 
----
-
-## 🔗 Live Demo
-
-🌍 **Frontend**: [https://newsnuggets-f.onrender.com/]
-⚙️ **Backend API**: [(https://newsnugget-backend.onrender.com)]
+**NewsNugget** is an enterprise-grade MERN platform that transforms news consumption through **Agentic AI**. It doesn't just summarize news; it analyzes information integrity, detects bias, and provides multi-modal (audio) delivery in a high-end, glassmorphic interface.
 
 ---
 
-## 🚀 Features
+## 💎 Premium Features
 
-- 📡 Fetches real-time news using **NewsAPI**
-- 🧠 Summarizes articles using **Gemini Pro (Google AI)**
-- 🗂 Save & manage AI summaries in **MongoDB Atlas**
-- 🛡 API keys are **securely stored in environment variables**
-- 🧾 Responsive UI built with **React + Tailwind CSS**
-- 🔁 Deployed full-stack on **Render**
+### 🧠 Agentic AI Pipeline
+*   **Intelligent Summarization**: Powered by Gemini 1.5 Flash for high-speed, 3-point objective distillations.
+*   **Deep Bias & Sentiment Analyzer**: Advanced orchestration detects Tone (e.g., Alarmist, Neutral), Sentiment, and provides a **0-10 Bias Score**.
+*   **AI Magic Refine**: An agentic loop allowing users to "steer" the AI output via natural language instructions.
+
+### 🎙️ Multi-Modal Experience
+*   **Audio Nuggets**: Built-in Text-to-Speech (TTS) allowing users to listen to news summaries on the go.
+*   **Dynamic Tagging**: Automated AI-generated meta-tags for better archival and searchability.
+
+### 🌓 Next-Gen Aesthetics
+*   **Glassmorphic UI**: A premium, translucent design system built for 2026 aesthetics.
+*   **Adaptive Theme System**: Context-driven Dark/Light mode with persisted user preferences.
+*   **Skeleton Loading**: Smooth UX transitions and optimized rendering.
 
 ---
 
 ## 💻 Tech Stack
 
-| Layer         | Tech Used                            |
-|---------------|--------------------------------------|
-| Frontend      | React, Tailwind CSS, Axios           |
-| Backend       | Express.js, Node.js, dotenv          |
-| AI Summarizer | Gemini Pro API (Generative AI)       |
-| News Source   | NewsAPI.org                          |
-| Database      | MongoDB Atlas (Mongoose ODM)         |
-| Hosting       | Render (Static Site + Web Service)   |
+| Layer | Technology | Role |
+| :--- | :--- | :--- |
+| **Frontend** | React 19, Tailwind v4, Axios | Reactive UI & State Management |
+| **Backend** | Node.js, Express.js | Secure API Gateway & AI Orchestration |
+| **AI Brain** | Google Gemini 1.5 Flash | LLM for Summarization & Analysis |
+| **Database** | MongoDB Atlas | Personal Knowledge Archive |
+| **Security** | JWT, Bcrypt, Rate Limiting | Auth & API Protection |
 
 ---
 
+## 🛠️ Installation & Setup
 
-## 🛠️ Setup Instructions (Local)
-
-### 1️⃣ Clone the Repo
-
+### 1️⃣ Clone and Install
 ```bash
 git clone https://github.com/ananya-giri/NewsNuggets.git
 cd NewsNuggets
+```
 
-
-2️⃣ Backend Setup (/server)
-
-cd server
-npm install
-
-Create a .env file inside server/:
+### 2️⃣ Backend Configuration (`/server`)
+Create a `.env` file in the `server` directory:
+```env
 MONGO_URI=your_mongodb_atlas_uri
 NEWS_API_KEY=your_newsapi_key
-
-
-Start server:
-
+GEMINI_API_KEY=your_google_ai_key
+JWT_SECRET=your_jwt_secret
+```
+Run the server:
+```bash
+cd server
+npm install
 node index.js
+```
 
-
-3️⃣ Frontend Setup (/01newssum)
-
+### 3️⃣ Frontend Configuration (`/01newssum`)
+The frontend is pre-configured to point to `localhost:5001`.
+```bash
 cd ../01newssum
 npm install
-
-
-Create a .env file inside 01newssum/:
-
-VITE_GEMINI_API_KEY=your_gemini_api_key
-
-
-Start client:
 npm run dev
+```
 
+---
 
-🔐 Security Notes
-🔒 NEWS_API_KEY is not exposed to the browser — it's called via the backend proxy
+## 🛡️ Security & Architecture
+*   **Secured AI Layer**: All Gemini API calls are proxied through the backend to prevent API Key exposure in the client browser.
+*   **Rate Limiting**: Custom middleware prevents API abuse for AI generation endpoints.
+*   **JWT Authentication**: Secure user sessions with encrypted password hashing.
 
-🔑 GEMINI_API_KEY is used client-side via VITE_ prefix, not pushed to GitHub
+---
 
-🗂 .env is gitignored
+## 👨‍💻 Author
+**Ananya Giri**  
+*Aspiring Full-Stack & AI Engineer*  
 
-✨ Future Enhancements
-✅ Add user authentication (Google login)
+📌 [LinkedIn](https://www.linkedin.com/in/ananyagiri/) | 📧 ananyagiri@example.com
 
-🔍 Search & filter saved summaries
-
-📱 Make mobile-first version
-
-🌐 Deploy to custom domain (e.g. newsnugget.ai)
-
-👩‍💻 Author
-Ananya Giri
-📌 Aspiring Full-Stack Developer
-
-📄 License
-This project is licensed under the MIT License.
-AI features powered by Google's Gemini Pro API.
-
+---
+📄 Licensed under MIT. AI features powered by Google Gemini.
