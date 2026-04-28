@@ -25,6 +25,11 @@
 *   **Adaptive Theme System**: Context-driven Dark/Light mode with persisted user preferences.
 *   **Skeleton Loading**: Smooth UX transitions and optimized rendering.
 
+### 🚀 Enterprise & DevOps Ready
+*   **Docker Containerization**: Multi-stage, fully containerized architecture via `docker-compose`.
+*   **CI/CD Pipeline**: Automated GitHub Actions workflows for testing and deployment.
+*   **Scalable API**: Built-in backend pagination (`.skip()` and `.limit()`) optimized for large datasets.
+
 ---
 
 ## 💻 Tech Stack
@@ -35,6 +40,7 @@
 | **Backend** | Node.js, Express.js | Secure API Gateway & AI Orchestration |
 | **AI Brain** | Google Gemini 1.5 Flash | LLM for Summarization & Analysis |
 | **Database** | MongoDB Atlas | Personal Knowledge Archive |
+| **DevOps** | Docker, Nginx, GitHub Actions | Containerization & CI/CD Pipelines |
 | **Security** | JWT, Bcrypt, Rate Limiting | Auth & API Protection |
 
 ---
@@ -55,6 +61,15 @@ NEWS_API_KEY=your_newsapi_key
 GEMINI_API_KEY=your_google_ai_key
 JWT_SECRET=your_jwt_secret
 ```
+### 🐳 3️⃣ Run with Docker (Recommended)
+You can launch the entire stack (Frontend + Backend) with a single command:
+```bash
+docker-compose up --build
+```
+*Frontend will be available on `http://localhost:80` and Backend on `http://localhost:5001`.*
+
+### 🖥️ 4️⃣ Manual Local Setup
+**Backend Configuration (`/server`)**
 Run the server:
 ```bash
 cd server
@@ -62,8 +77,7 @@ npm install
 node index.js
 ```
 
-### 3️⃣ Frontend Configuration (`/01newssum`)
-The frontend is pre-configured to point to `localhost:5001`.
+**Frontend Configuration (`/01newssum`)**
 ```bash
 cd ../01newssum
 npm install
