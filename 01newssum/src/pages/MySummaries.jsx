@@ -4,11 +4,21 @@ import { useEffect, useState } from 'react'
 export default function MySummaries() {
   const [summaries, setSummaries] = useState([])
   const [loadingId, setLoadingId] = useState(null)
+  const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [totalItems, setTotalItems] = useState(0)
+  const limit = 5
 
   const fetchSummaries = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:5001/api/summaries?type=mine')
-      setSummaries(res.data)
+      const res = await axios.get(`http://127.0.0.1:5001/api/summaries?type=mine&page=${page}&limit=${limit}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      setSummaries(res.data.summaries || [])
+      setTotalPages(res.data.totalPages || 1)
+      setTotalItems(res.data.totalSummaries || 0)
     } catch (err) {
       console.error("❌ Failed to fetch summaries:", err.message)
     }
@@ -16,7 +26,7 @@ export default function MySummaries() {
 
   useEffect(() => {
     fetchSummaries()
-  }, [])
+  }, [page])
 
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this nugget?')) return
@@ -54,7 +64,7 @@ export default function MySummaries() {
         </div>
         <div className="flex items-center space-x-2 text-sm font-bold text-slate-500 uppercase tracking-widest">
           <span className="w-8 h-[1px] bg-white/10"></span>
-          <span>{summaries.length} Saved Items</span>
+          <span>{totalItems} Saved Items</span>
         </div>
       </div>
 
@@ -150,6 +160,28 @@ export default function MySummaries() {
               </div>
             </div>
           ))}
+
+          {totalPages > 1 && (
+            <div className="flex justify-center space-x-4 mt-8">
+              <button 
+                disabled={page === 1}
+                onClick={() => setPage(p => Math.max(1, p - 1))}
+                className={`px-6 py-3 rounded-2xl font-bold transition-all border ${page === 1 ? 'bg-white/5 text-slate-500 border-white/5 cursor-not-allowed' : 'bg-brand-primary/10 text-brand-primary border-brand-primary/20 hover:bg-brand-primary/20'}`}
+              >
+                Previous
+              </button>
+              <div className="flex items-center px-4 font-bold text-slate-400">
+                Page {page} of {totalPages}
+              </div>
+              <button 
+                disabled={page === totalPages}
+                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                className={`px-6 py-3 rounded-2xl font-bold transition-all border ${page === totalPages ? 'bg-white/5 text-slate-500 border-white/5 cursor-not-allowed' : 'bg-brand-primary/10 text-brand-primary border-brand-primary/20 hover:bg-brand-primary/20'}`}
+              >
+                Next
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

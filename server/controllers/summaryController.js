@@ -58,7 +58,7 @@ export const saveSummary = async (req, res) => {
 // 🔵 READ: Get Personal Summaries vs Global Feed
 export const getSummaries = async (req, res) => {
   try {
-    const { type } = req.query
+    const { type, page = 1, limit = 10 } = req.query
     let query = {}
 
     if (type === 'public') {
@@ -67,8 +67,25 @@ export const getSummaries = async (req, res) => {
       query = { user: req.user.id }
     }
 
-    const summaries = await Summary.find(query).populate('user', 'name').sort({ createdAt: -1 })
-    res.json(summaries)
+    const pageNumber = parseInt(page, 10);
+    const limitNumber = parseInt(limit, 10);
+    const skip = (pageNumber - 1) * limitNumber;
+
+    const totalSummaries = await Summary.countDocuments(query);
+    const totalPages = Math.ceil(totalSummaries / limitNumber);
+
+    const summaries = await Summary.find(query)
+      .populate('user', 'name')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limitNumber);
+
+    res.json({
+      summaries,
+      currentPage: pageNumber,
+      totalPages,
+      totalSummaries
+    });
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
