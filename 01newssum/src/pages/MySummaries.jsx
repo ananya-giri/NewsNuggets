@@ -9,22 +9,22 @@ export default function MySummaries() {
   const [totalItems, setTotalItems] = useState(0)
   const limit = 5
 
-  const fetchSummaries = async () => {
-    try {
-      const res = await axios.get(`http://127.0.0.1:5001/api/summaries?type=mine&page=${page}&limit=${limit}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-      setSummaries(res.data.summaries || [])
-      setTotalPages(res.data.totalPages || 1)
-      setTotalItems(res.data.totalSummaries || 0)
-    } catch (err) {
-      console.error("❌ Failed to fetch summaries:", err.message)
-    }
-  }
-
   useEffect(() => {
+    const fetchSummaries = async () => {
+      try {
+        const res = await axios.get(`http://127.0.0.1:5001/api/summaries?type=mine&page=${page}&limit=${limit}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        setSummaries(res.data.summaries || [])
+        setTotalPages(res.data.totalPages || 1)
+        setTotalItems(res.data.totalSummaries || 0)
+      } catch (err) {
+        console.error("❌ Failed to fetch summaries:", err.message)
+      }
+    }
+    
     fetchSummaries()
   }, [page])
 
@@ -34,6 +34,7 @@ export default function MySummaries() {
       await axios.delete(`http://127.0.0.1:5001/api/summaries/${id}`)
       setSummaries(summaries.filter(s => s._id !== id))
     } catch (err) {
+      console.error(err)
       alert('Failed to delete summary')
     }
   }
@@ -47,6 +48,7 @@ export default function MySummaries() {
       const res = await axios.put(`http://127.0.0.1:5001/api/summaries/${id}/refine`, { instruction })
       setSummaries(summaries.map(s => s._id === id ? res.data : s))
     } catch (err) {
+      console.error(err)
       alert('Failed to refine summary')
     } finally {
       setLoadingId(null)
