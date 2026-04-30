@@ -5,6 +5,8 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Gemini AI](https://img.shields.io/badge/Gemini_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
 
+🚀 **Live Demo:** [https://news-nuggets-snowy.vercel.app/](https://news-nuggets-snowy.vercel.app/)
+
 **NewsNugget** is an enterprise-grade MERN platform that transforms news consumption through **Agentic AI**. It doesn't just summarize news; it analyzes information integrity, detects bias, and provides multi-modal (audio) delivery in a high-end, glassmorphic interface.
 
 ---
