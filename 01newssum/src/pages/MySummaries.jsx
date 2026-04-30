@@ -12,7 +12,7 @@ export default function MySummaries() {
   useEffect(() => {
     const fetchSummaries = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:5001/api/summaries?type=mine&page=${page}&limit=${limit}`, {
+        const res = await axios.get(`https://newsnuggets-b.onrender.com/api/summaries?type=mine&page=${page}&limit=${limit}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -31,7 +31,7 @@ export default function MySummaries() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this nugget?')) return
     try {
-      await axios.delete(`http://127.0.0.1:5001/api/summaries/${id}`)
+      await axios.delete(`https://newsnuggets-b.onrender.com/api/summaries/${id}`)
       setSummaries(summaries.filter(s => s._id !== id))
     } catch (err) {
       console.error(err)
@@ -45,7 +45,7 @@ export default function MySummaries() {
 
     setLoadingId(id)
     try {
-      const res = await axios.put(`http://127.0.0.1:5001/api/summaries/${id}/refine`, { instruction })
+      const res = await axios.put(`https://newsnuggets-b.onrender.com/api/summaries/${id}/refine`, { instruction })
       setSummaries(summaries.map(s => s._id === id ? res.data : s))
     } catch (err) {
       console.error(err)

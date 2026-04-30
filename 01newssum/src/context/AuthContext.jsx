@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   // Login user
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://127.0.0.1:5001/api/auth/login', { email, password })
+      const res = await axios.post('https://newsnuggets-b.onrender.com/api/auth/login', { email, password })
       
       const { token, user: userData } = res.data
       
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   // Register user
   const register = async (name, email, password) => {
     try {
-      const res = await axios.post('http://127.0.0.1:5001/api/auth/register', { name, email, password })
+      const res = await axios.post('https://newsnuggets-b.onrender.com/api/auth/register', { name, email, password })
       
       const { token, user: userData } = res.data
       

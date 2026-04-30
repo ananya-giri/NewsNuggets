@@ -38,7 +38,7 @@ export default function ArticleDetail() {
     
     let summaryText = ''
     try {
-      const genRes = await axios.post('http://127.0.0.1:5001/api/summaries/generate', { text: fullText })
+      const genRes = await axios.post('https://newsnuggets-b.onrender.com/api/summaries/generate', { text: fullText })
       summaryText = genRes.data.summary
     } catch (err) {
       const errorMsg = err.response?.data?.details || err.message
@@ -52,7 +52,7 @@ export default function ArticleDetail() {
     if (summaryText.startsWith('Failed to')) return
 
     try {
-      await axios.post('http://127.0.0.1:5001/api/summaries', {
+      await axios.post('https://newsnuggets-b.onrender.com/api/summaries', {
         title: article.title,
         source: article.source.name,
         date: new Date(article.publishedAt).toLocaleDateString(),
@@ -73,7 +73,7 @@ export default function ArticleDetail() {
     setAnalysisLoading(true)
     const fullText = article.content || article.description || article.title
     try {
-      const res = await axios.post('http://127.0.0.1:5001/api/summaries/analyze', { text: fullText })
+      const res = await axios.post('https://newsnuggets-b.onrender.com/api/summaries/analyze', { text: fullText })
       setAnalysis(res.data)
     } catch (err) {
       console.error("❌ Analysis failed:", err.message)

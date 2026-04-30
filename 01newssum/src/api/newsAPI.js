@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // ✅ Local backend API URL (change to production URL when deploying)
-const BASE_URL = 'http://127.0.0.1:5001/api/news'
+const BASE_URL = 'https://newsnuggets-b.onrender.com/api/news'
 
 export const getNewsByCategory = async (category = 'general') => {
   try {
